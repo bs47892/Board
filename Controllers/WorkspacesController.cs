@@ -6,11 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Board.Models;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Http;
 
 namespace Board.Controllers
 {
     public class WorkspacesController : Controller
     {
+        private bool inSession
+        {
+            get { return HttpContext.Session.GetInt32("UserId") != null; }
+        }
+
+        private User loggedUser
+        {
+            get
+            {
+                return _context.Users.FirstOrDefault(user => user.UserId == HttpContext.Session.GetInt32("UserId"));
+            }
+        }
+
         private readonly Context _context;
 
         public WorkspacesController(Context context)
@@ -18,9 +33,22 @@ namespace Board.Controllers
             _context = context;
         }
 
+
         // GET: Workspaces
         public async Task<IActionResult> Index()
         {
+            if (!inSession) // kjo metod eshte qe kur nuk je logged in me te qit ne faqen kryesore
+            {
+                return RedirectToAction(nameof(Index), "Home");
+            }
+
+            var context = _context.Workspaces
+            .Include(a => a.WorkspaceUsers)
+            .OrderBy(a => a.UpdatedAt);
+
+            ViewBag.UserId = loggedUser.UserId;
+            ViewBag.Username = $"{loggedUser.FirstName} {loggedUser.LastName}";
+         
             return View(await _context.Workspaces.ToListAsync());
         }
 
@@ -39,6 +67,9 @@ namespace Board.Controllers
                 return NotFound();
             }
 
+            ViewBag.UserId = loggedUser.UserId;
+            ViewBag.Username = $"{loggedUser.FirstName} {loggedUser.LastName}";
+
             return View(workspace);
         }
 
@@ -46,6 +77,15 @@ namespace Board.Controllers
         // GET: Workspaces/Create
         public IActionResult Create()
         {
+            //BB
+            if (!inSession)
+            {
+                return RedirectToAction(nameof(Index), "Home");
+            }
+
+            ViewBag.UserId = loggedUser.UserId;
+            ViewBag.Username = $"{loggedUser.FirstName} {loggedUser.LastName}";
+            //BB
             return View();
         }
 
@@ -59,6 +99,8 @@ namespace Board.Controllers
         {
             if (ModelState.IsValid)
             {
+                workspace.CreatedAt = DateTime.Now;
+
                 _context.Add(workspace);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -79,6 +121,10 @@ namespace Board.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.UserId = loggedUser.UserId;
+            ViewBag.Username = $"{loggedUser.FirstName} {loggedUser.LastName}";
+
             return View(workspace);
         }
 
@@ -98,6 +144,7 @@ namespace Board.Controllers
             {
                 try
                 {
+                    workspace.UpdatedAt = DateTime.Now;
                     _context.Update(workspace);
                     await _context.SaveChangesAsync();
                 }
@@ -132,6 +179,9 @@ namespace Board.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.UserId = loggedUser.UserId;
+            ViewBag.Username = $"{loggedUser.FirstName} {loggedUser.LastName}";
 
             return View(workspace);
         }

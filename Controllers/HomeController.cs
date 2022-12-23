@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 namespace Board.Controllers
 {
@@ -28,8 +29,8 @@ namespace Board.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(User newUser)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 if (_context.Users.Any(user => user.Email == newUser.Email))
                 {
                     ModelState.AddModelError("Email", "Email is already in use!");
@@ -38,7 +39,7 @@ namespace Board.Controllers
 
                 PasswordHasher<User> hasher = new PasswordHasher<User>();
                 newUser.Password = hasher.HashPassword(newUser, newUser.Password);
-            
+
                 _context.Add(newUser);
                 await _context.SaveChangesAsync();
 
@@ -46,7 +47,7 @@ namespace Board.Controllers
 
                 return RedirectToAction(nameof(Index));
 
-            //}
+            }
             return View(nameof(Index));
         }
 
@@ -54,8 +55,8 @@ namespace Board.Controllers
         [HttpPost("Login")]
         public IActionResult Login(LoginUser userSubmission)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 var userInDb = _context.Users.FirstOrDefault(user => user.Email == userSubmission.UserEmail);
 
                 if (userInDb == null)
@@ -73,10 +74,10 @@ namespace Board.Controllers
                     return View(nameof(Index));
                 }
 
-               // HttpContext.Session.SetInt32("UserId", userInDb.UserId);
+                HttpContext.Session.SetInt32("UserId", userInDb.UserId);
 
-                return RedirectToAction(nameof(Index), "Auctions");
-            }
+                return RedirectToAction(nameof(Index), "Workspaces");
+           // }
             return View(nameof(Index));
         }
 
@@ -84,8 +85,14 @@ namespace Board.Controllers
         [HttpGet("Logout")]
         public RedirectToActionResult Logout()
         {
-           // HttpContext.Session.Clear();
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
     }
 }
+
+
+
+
+
+

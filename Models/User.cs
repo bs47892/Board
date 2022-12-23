@@ -33,7 +33,7 @@ namespace Board.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
-        public List<WorkspaceUsers> WorkspaceUsers { get; set; }
-        public List<CardUser> CardUsers { get; set; }
+        public List<WorkspaceUsers> WorkspaceUsers { get; set; } = new();
+        public List<CardUser> CardUsers { get; set; } = new();
     }
 }

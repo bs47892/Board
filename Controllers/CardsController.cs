@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Board.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +12,23 @@ namespace Board.Controllers
 {
     public class CardsController : Controller
     {
+       
+        //BB
+        private bool inSession
+        {
+            get { return HttpContext.Session.GetInt32("UserId") != null; }
+        }
+        private User loggedUser
+        {
+            get
+            {
+                return _context.Users
+                    .FirstOrDefault(user => user.UserId == HttpContext.Session.GetInt32("UserId"));
+            }
+        }
+        //BB
         private readonly Context _context;
-
+        
         public CardsController(Context context)
         {
             _context = context;
@@ -46,7 +62,16 @@ namespace Board.Controllers
 
         // GET: Cards/Create
         public IActionResult Create()
-        {
+        {   //BB
+            if (!inSession)
+            {
+                return RedirectToAction(nameof(Index), "Home");
+            }
+
+            ViewBag.UserId = loggedUser.UserId; 
+            ViewBag.Username = $"{loggedUser.FirstName} {loggedUser.LastName}";
+
+            //BB
             ViewData["ListId"] = new SelectList(_context.Lists, "ListId", "ListId");
             return View();
         }

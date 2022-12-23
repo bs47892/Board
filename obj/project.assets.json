@@ -10640,11 +10640,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Board\\Board.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Board\\Board.csproj",
       "projectName": "Board",
-      "projectPath": "C:\\Users\\Admin\\source\\repos\\Board\\Board.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Board\\Board.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\source\\repos\\Board\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Board\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
