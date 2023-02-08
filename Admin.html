@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard using HTML CSS and JavaScript</title>
+    <!-- MATERIAL CDN -->
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+    rel = "stylesheet">
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="./Admin.css">
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./logo1-.png">
+                    <h2>BO<span class="danger">ARD</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                 </div>
+            </div>
+
+                <div class="sidebar">
+                    <a href="#">
+                        <span class="material-icons-sharp">person</span>
+                    <h3>Members</h3>
+                    </a>
+                    <a href="#" class="active">
+                        <span class="material-icons-sharp">grid_view</span>
+                        <h3>Boards</h3>
+                    </a>
+                    
+                    <a href="#">
+                        <span class="material-icons-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+
+                    <h4>Workspace views</h4>
+
+                        <a href="#">
+                        <span class="material-icons-sharp">table_view</span>
+                        <h3>Table</h3>
+
+                    </a>
+                        <a href="#">
+                        <span class="material-icons-sharp">calendar_month</span>
+                        <h3>Calendar</h3>
+                    </a>
+
+                    <h5>Your Boards</h5>
+
+                    <a href="#">
+                        <span class="material-icons-sharp">task_alt</span>
+                        <h3>Board 1</h3>
+                    </a>
+                    
+                    <a href="#">
+                        <span class="material-icons-sharp">task_alt</span>
+                        <h3>Board 2</h3>
+                    </a>
+                     <a href="#">
+                        <span class="material-icons-sharp">task_alt</span>
+                        <h3>Board 3</h3>  
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Log out</h3>
+                    </a>
+                </div>
+            </aside>
+            <!-------------------- END OF ASIDE -------------------->
+            <main>
+               <h1>Board</h1>
+               
+               <div class="date">
+                   <input type="date">
+               </div>
+   
+               <div class="yourboards">
+                <div class="fashionbrand">
+                    <span class="material-icons-sharp">draw</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Main Project</h3>
+                            <h1>Fashion Brand</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!----------------- END OF FASHIONBRAND ----------------->
+                <div class="makeupline">
+                    <span class="material-icons-sharp">draw</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Second Project</h3>
+                            <h1>Makeup Line</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>62%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!----------------- END OF MAKEUP LINE ----------------->
+                <div class="healthandbusiness">
+                    <span class="material-icons-sharp">draw</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Third Project</h3>
+                            <h1>Health and Business</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>44%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                    </div>
+                  <!----------------- END OF HEALTH AND BUSINESS ----------------->
+                </div>
+                <!---------------------- END OF YOUR BOARDS ---------------------->
+
+                <div class="team-members">
+                    <h2>Team members</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Xheneta</td>
+                                <td>202153938</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                             <tr>
+                                <td>Tixhe</td>
+                                <td>202153927</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                             <tr>
+                                <td>Ediola</td>
+                                <td>202153926</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                             <tr>
+                                <td>Besarta</td>
+                                <td>192047892</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                             <tr>
+                                <td>Anna</td>
+                                <td>202126523</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                             <tr>
+                                <td>Mark</td>
+                                <td>192025639</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                             <tr>
+                                <td>True</td>
+                                <td>202153911</td>
+                                <td class="warning">Active</td>
+                             </tr>
+                        </tbody>
+                    </table>
+                    <div class="addmember">
+                        <div>
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Add Member</h3>
+                        </div>
+                     </div>
+                    <a href="#">Show All</a>
+                    
+                </div>
+            </main>
+            <!-------------------- END OF MAIN ---------------->
+
+            <div class="right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">menu</span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="profile">
+                        <div class="info">
+                            <p>Hey, <b>XHK</b></p>
+                            <small class="text-muted">Admin</small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="profilepic.png">
+                        </div>
+                    </div>
+                </div>
+                <!---------------- END OF TOP ------------------>
+                <div class="recent-updates">
+                    <h2>Recent Updates</h2>
+                    <div class="updates">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="profilepic-2.png">
+                            </div>
+                            <div class="message">
+                                <p><b>Anna</b> has done 12% work today</p>
+                                <small class="text-muted">2 Minutes ago</small>
+                            </div>
+                        </div>
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="profilepic-3.png">
+                            </div>
+                            <div class="message">
+                                <p><b>Mark</b> has finished his assignment for today</p>
+                                <small class="text-muted">2 Minutes ago</small>
+                            </div>
+                        </div>
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="profilepic-4.png">
+                            </div>
+                            <div class="message">
+                                <p><b>True</b> has done 5% work today</p>
+                                <small class="text-muted">2 Minutes ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             <!--------------- END OF RECENT UPDATES ---------------->
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
